@@ -10,9 +10,18 @@ public class Selection {
 
 
     public static void main(String[] args) {
-        int[] sorterArray = new int[]{9, 3, 6, 1, 2, 8};
-        select(sorterArray);
-        System.out.println("test");
+        int[] a = new int[]{9, 3, 6, 1, 2, 8};
+        System.out.println("排序之前：");
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
+
+        System.out.println();
+        System.out.println("排序之后：");
+        select4(a);
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
     }
 
     /**
@@ -36,6 +45,63 @@ public class Selection {
             int temp = a[i];
             a[i] = a[min];
             a[min] = temp;
+        }
+    }
+
+
+    public static void select2(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            //设置最小的标签
+            int mid = i;
+            for (int j = i + 1; j < a.length; j++) {
+                //这块有问题，每次应该与最小值做比较
+                if (a[j] < a[mid]) mid = j;
+            }
+//            int temp = a[mid];
+//            a[mid] = a[i];
+//            a[i] = temp;
+            //最后进行交换
+            int temp = a[i];
+            a[i] = a[mid];
+            a[mid] = temp;
+        }
+    }
+
+
+    public static void select3(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            int min = i;
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[j] < a[min]) min = j;
+            }
+
+            int temp = a[min];
+            a[min] = a[i];
+            a[i] = temp;
+        }
+    }
+
+
+    ////////////////////////////////////练习/////////////////////////////////////////////////////////////////////////////////
+    public static void select4(int[] a) {
+        //选择排序
+        //找到最小的一个，与第一个交换，继续找下一个，与第二个交换
+
+
+        for (int i = 0; i < a.length; i++) {
+            //比对的起始值信息a
+            int min = i;
+            //遍历后面的数组信息
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[j] < a[min]) {
+                    min = j;
+                }
+
+            }
+            //找到最小的值后，进行交换
+            int temp = a[min];
+            a[min] = a[i];
+            a[i] = temp;
         }
     }
 }

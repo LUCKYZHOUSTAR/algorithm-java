@@ -1,9 +1,9 @@
 package cmc.lucky.algorithm;
 
 /**
- * @Author:chaoqiang.zhou
- *
- * 前提：数组是有序的数组
+ * @Author:chaoqiang.zhou 前提：数组是有序的数组
+ * 参考该博客信息
+ * http://www.cnblogs.com/luoxn28/p/5767571.html
  * @Description:二分查找
  * @Date:Create in 11:17 2017/9/5
  */
@@ -12,7 +12,7 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
-        System.out.println(rank4(3, array));
+        System.out.println(binarySearch2(array, 7));
     }
 
     /**
@@ -98,5 +98,87 @@ public class BinarySearch {
             else return mid;
         }
         return -1;
+    }
+
+
+    /////////////////////////////////////////练习//////////////////////////////
+    public static int binarySearch(int key, int[] a) {
+
+        //前提是一个排好序的数组
+        //每次都是折半，一半的折半进行查询
+        //思路很重要，逻辑思维很重要
+        //先折半，比较中间的值，然后看在哪一个区域，继续把剩下的区域进行折半,一直折半到1为终结，所以这就是一个变化的常量
+        int node = 0;
+        int temp = a.length - 1;
+        for (int mid = a.length / 2; mid > 0; mid /= 2) {
+            //内部进行判断
+            //如果是左半部分，起始+(length-mid)/
+            //找到中间的值
+            int ho = node + (temp - node) / 2;
+            if (a[ho] > key) {
+                //在左半部分
+                temp = temp - 1;
+            } else if (a[ho] < key) {
+                //在有部分
+                node = ho + 1;
+            } else return mid;
+        }
+        return -1;
+    }
+
+
+    public static int binarSearch(int[] array, int key) {
+        int left = 0;
+        int right = array.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (array[mid] > key) right = mid - 1;
+            else if (array[mid] < key) left = mid + 1;
+            else return mid;
+        }
+
+        return -1;
+    }
+
+
+    public static int binarySearch2(int[] a, int key) {
+        //进行折半模拟，通过坐标幼稚
+        int left = 0;
+        int right = a.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (a[mid] > key) {
+                right = mid - 1;
+            } else if (a[mid] < key) {
+                left = mid + 1;
+            } else {
+                return mid;
+            }
+
+        }
+
+        return -1;
+    }
+
+    public static int largest_prime_factor(int n) {
+        if (n < 1) {//
+            return -1;
+        }
+        if (n == 1) {//判断边界条件
+            return 1;
+        }
+        while (n > 1) {
+            for (int i = 2; i <= n; i++) {
+                if (n == i) {//到达n了，就没有继续的必要了，已经最大
+                    return n;
+                }
+                if (n % i == 0) {//
+                    n = n / i;
+                    break;
+                }
+            }
+        }
+
+        return n;
     }
 }

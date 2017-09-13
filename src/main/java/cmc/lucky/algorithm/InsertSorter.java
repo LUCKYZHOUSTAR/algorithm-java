@@ -9,24 +9,6 @@ public class InsertSorter {
 
 
     /**
-     * 1.数组中每个元素距离它的最终位置都不远
-     * 2.一个有序的大树组接一个小数组
-     * 3.数组中只有几个元素的位置不正确
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        /**
-         * 给定一个数组，从数组的第二位进行比对，插入操作
-         */
-        int[] sorterArray = new int[]{9, 3, 6, 1, 2, 8};
-        InsertSort(sorterArray);
-        insertSorter(sorterArray);
-        System.out.println("insert sorter");
-        System.out.println(sorterArray);
-    }
-
-    /**
      * 3
      * 3 5==>   3 1 5==>1 3 5
      * 1 3 5
@@ -74,4 +56,46 @@ public class InsertSorter {
 
         }
     }
+
+
+    public static void insertSorter2(int[] a) {
+        for (int i = 1; i < a.length; i++) {
+            int temp = a[i];
+            int j;
+            for (j = i - 1; j >= 0 && a[j] > temp; j--) {
+                //其实就是找位置信息
+                a[j + 1] = a[j];
+            }
+            a[j + 1] = temp;
+        }
+
+    }
+
+
+    /**
+     * 1.数组中每个元素距离它的最终位置都不远
+     * 2.一个有序的大树组接一个小数组
+     * 3.数组中只有几个元素的位置不正确
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        /**
+         * 给定一个数组，从数组的第二位进行比对，插入操作
+         */
+        int[] a = new int[]{9, 3, 6, 1, 2, 8};
+        System.out.println("排序之前：");
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
+
+        System.out.println();
+        System.out.println("排序之后：");
+        insertSorter2(a);
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
+
+    }
+
 }

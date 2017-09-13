@@ -175,8 +175,114 @@ public class Shell {
         }
     }
 
+
+    /**
+     * 希尔排序最终算法操作
+     *
+     * @param a
+     */
+    public static void sort5(int a[]) {
+
+    }
+
+
+    /**
+     * 最终算法
+     *
+     * @param arr
+     * @param n
+     */
+    private static void shellSort(int[] arr, int n) {
+        for (int gap = n; gap > 0; gap /= 2) {
+            for (int i = gap; i < arr.length; i++) {
+                int j, c = arr[i];
+                for (j = i; j >= gap && arr[j - gap] > c; j -= gap) {
+                    arr[j] = arr[j - gap];
+                }
+                arr[j] = c;
+            }
+        }
+    }
+
+    /**
+     * 最终算法
+     *
+     * @param arr
+     * @param n
+     */
+    public static void shellSortArray(int[] arr, int n) {
+        for (int gap = n; gap > 0; gap /= 2) {
+            //数组从0开始，无须在加1了,内部是一个插入排序
+            for (int i = gap; i < arr.length; i += 1) {
+                //设置标签的值信息
+                int temp = arr[i];
+                for (int j = i - gap; j >= 0; j -= gap) {
+                    if (arr[j] < arr[i]) {
+                        break;
+                    }
+                    //进行交换设置
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
+
+    /**
+     * 最终算法
+     *
+     * @param arr
+     * @param n
+     */
+    public static void shellSortArray1(int[] arr, int n) {
+        for (int gap = n; gap > 0; gap /= 2) {
+            //数组从0开始，无须在加1了,内部是一个插入排序
+            for (int i = gap; i < arr.length; i += 1) {
+                //设置标签的值信息
+                int temp = arr[i];
+                for (int j = i - gap; j >= 0 && arr[j] > arr[i]; j -= gap) {
+                    //进行交换设置
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
+
+    public static void shellSortArray2(int[] arr, int n) {
+        //步长一直在缩小
+        for (int gap = n; gap > 0; gap /= 2) {
+            //内部是一个插入排序
+            for (int i = gap; i < arr.length; i++) {
+                //这块需要是j--的操作
+                for (int j = i - gap; j >= 0 && arr[j] > arr[j + gap]; j -= gap) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
+
+//    public static void shellSortArray3(int[] arr, int n) {
+//        //步长一直在缩小
+//        for (int gap = n; gap > 0; gap /= 2) {
+//            //内部是一个插入排序
+//            for (int i = gap; i < arr.length; i++) {
+//                //这块需要是j--的操作
+//                for (int j = i; j >= gap && arr[j - gap] > arr[i]; j -= gap) {
+//                    arr[j] = arr[j - gap];
+//                }
+//                arr[i] = c;
+//            }
+//        }
+//    }
+
     public static void main(String[] args) {
-        int[] a = {49, 38, 65, 97, 76, 13, 27, 49, 78, 34, 12, 64, 1};
+        int[] a = new int[]{9, 3, 6, 1, 2, 8};
         System.out.println("排序之前：");
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + " ");
@@ -184,7 +290,6 @@ public class Shell {
 
         System.out.println();
         System.out.println("排序之后：");
-        sort2(a, 2);
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + " ");
         }
