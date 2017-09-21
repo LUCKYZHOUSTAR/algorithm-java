@@ -93,7 +93,7 @@ public class Recursion {
     }
 
 
-    public static int maxFactor(int n,String max) {
+    public static int maxFactor(int n, String max) {
         int min = 2;
 
         while (min <= n) {
@@ -143,9 +143,25 @@ public class Recursion {
     }
 
 
+    /**
+     * 尾递归
+     * H(N,A)==
+     * a+1;
+     * H(n-1,a+1/n)
+     * 通过增加一个参数a来记录当前递归中目前为止已经计算的数列之和。最终就形成了尾递归版本
+     *
+     * @param n
+     * @param a
+     * @return
+     */
+    public static int series(int n, int a) {
+        return 0;
+    }
+
+
     public static void main(String[] args) {
 //        maxFactor(12);
 //        maxFactor(12, 2);
-        System.out.println(maxFactor(12,""));
+        System.out.println(maxFactor(12, ""));
     }
 }

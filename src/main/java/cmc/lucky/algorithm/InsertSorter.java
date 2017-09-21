@@ -73,6 +73,23 @@ public class InsertSorter {
 
 
     /**
+     * 插入排序
+     *
+     * @param sorterArray
+     */
+    public static void InsertSort2(int[] sorterArray) {
+        //数组的坐标是从0开始的
+        for (int i = 1; i < sorterArray.length; i++) {
+            int temp = sorterArray[i];
+            int j;
+            for (j = i - 1; j >= 0 && sorterArray[j] > temp; j--) {
+                sorterArray[j + 1] = sorterArray[j];
+            }
+            sorterArray[j]=3;
+        }
+    }
+
+    /**
      * 1.数组中每个元素距离它的最终位置都不远
      * 2.一个有序的大树组接一个小数组
      * 3.数组中只有几个元素的位置不正确
@@ -91,7 +108,7 @@ public class InsertSorter {
 
         System.out.println();
         System.out.println("排序之后：");
-        insertSorter2(a);
+        InsertSort(a);
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + " ");
         }

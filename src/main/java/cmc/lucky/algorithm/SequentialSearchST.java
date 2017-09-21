@@ -13,6 +13,7 @@ public class SequentialSearchST<Key, Value> {
     private class Node {
 
 
+        //每每添加一个，都添加到首节点信息上
         public Node(Key key, Value value, Node next) {
             this.key = key;
             this.value = value;

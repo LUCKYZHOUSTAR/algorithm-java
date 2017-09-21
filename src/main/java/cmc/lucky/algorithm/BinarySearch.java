@@ -142,14 +142,16 @@ public class BinarySearch {
 
 
     public static int binarySearch2(int[] a, int key) {
-        //进行折半模拟，通过坐标幼稚
+        //进行折半模拟，通过坐标来进行位移操作
         int left = 0;
         int right = a.length - 1;
         while (left <= right) {
             int mid = (left + right) / 2;
             if (a[mid] > key) {
+                //数据在左表，因此右边的指针变为mid向前移动一个点
                 right = mid - 1;
             } else if (a[mid] < key) {
+                //数据在右表，因此坐标的指针变为mid向后移动一个点
                 left = mid + 1;
             } else {
                 return mid;
