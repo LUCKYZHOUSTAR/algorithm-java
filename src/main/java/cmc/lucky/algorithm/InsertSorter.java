@@ -1,5 +1,7 @@
 package cmc.lucky.algorithm;
 
+import java.util.ArrayList;
+
 /**
  * @Author:chaoqiang.zhou
  * @Description:插入排序算法
@@ -7,6 +9,8 @@ package cmc.lucky.algorithm;
  */
 public class InsertSorter {
 
+
+    private ArrayList a = new ArrayList();
 
     /**
      * 3
@@ -85,7 +89,7 @@ public class InsertSorter {
             for (j = i - 1; j >= 0 && sorterArray[j] > temp; j--) {
                 sorterArray[j + 1] = sorterArray[j];
             }
-            sorterArray[j]=3;
+            sorterArray[j] = 3;
         }
     }
 

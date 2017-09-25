@@ -22,7 +22,6 @@ public class QuickSort {
         while (i != j) {
 
             //由于是左端作为基准位数，所以要先从高位开始寻找，因为基准位数调整的时候，要找到比temp更小的数字
-
             while(i<j&&a[j]>=temp){
                 j--;
             }
